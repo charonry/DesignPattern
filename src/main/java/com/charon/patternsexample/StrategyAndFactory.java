@@ -25,7 +25,10 @@ public class StrategyAndFactory {
     }
 }
 
-
+/**
+ *
+ * 各种情况枚举分类
+ */
 enum RechargeTypeEnum{
     E_BANK(1, "网银"),
     BUSI_ACCOUNTS(2, "商户账号"),
@@ -63,29 +66,48 @@ enum RechargeTypeEnum{
     }
 }
 
+/**
+ * 抽象策略
+ */
 interface  Strategy{
      Double calRecharge(Double charge ,RechargeTypeEnum type );
 }
 
+/**
+ * 具体策略处理一
+ */
 class  EbankStrategy implements Strategy{
     public Double calRecharge(Double charge, RechargeTypeEnum type) {
         return charge*0.85;
     }
 }
 
+/**
+ * 具体策略处理二
+ */
 class BusiAcctStrategy implements  Strategy{
     public Double calRecharge(Double charge, RechargeTypeEnum type) {
         return charge*0.90;
     }
 }
 
+/**
+ * 具体策略处理三
+ */
 class MobileStrategy implements Strategy{
     public Double calRecharge(Double charge, RechargeTypeEnum type) {
         return charge;
     }
 }
 
+/**
+ *
+ * 工厂模式创建所有枚举情况
+ */
 class  StrategyFactory{
+    /**
+     * 由于都是public没有private，就没有采用先创建工厂
+     */
     public static Map<Integer,Strategy> strategyMap = new HashMap();
 
     public StrategyFactory() {
@@ -103,13 +125,11 @@ class  StrategyFactory{
 }
 
 
+/**
+ * 运行环境，取出具体策略处理
+ */
 class Context{
     private Strategy strategy;
-
-
-    public void setStrategy(Strategy strategy) {
-        this.strategy = strategy;
-    }
 
     public Double calRecharge(Double charge, Integer type) {
         strategy = new StrategyFactory().creator(type);
