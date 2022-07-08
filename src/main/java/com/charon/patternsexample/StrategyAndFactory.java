@@ -38,16 +38,16 @@ enum RechargeTypeEnum{
 
     private String description;
 
-     RechargeTypeEnum(int value, String description) {
+    RechargeTypeEnum(int value, String description) {
         this.value = value;
         this.description = description;
     }
 
-     int value() {
+    int value() {
         return value;
     }
 
-     String description() {
+    String description() {
         return description;
     }
 
@@ -70,13 +70,14 @@ enum RechargeTypeEnum{
  * 抽象策略
  */
 interface  Strategy{
-     Double calRecharge(Double charge ,RechargeTypeEnum type );
+    Double calRecharge(Double charge ,RechargeTypeEnum type );
 }
 
 /**
  * 具体策略处理一
  */
 class  EbankStrategy implements Strategy{
+    @Override
     public Double calRecharge(Double charge, RechargeTypeEnum type) {
         return charge*0.85;
     }
@@ -86,6 +87,7 @@ class  EbankStrategy implements Strategy{
  * 具体策略处理二
  */
 class BusiAcctStrategy implements  Strategy{
+    @Override
     public Double calRecharge(Double charge, RechargeTypeEnum type) {
         return charge*0.90;
     }
@@ -95,6 +97,7 @@ class BusiAcctStrategy implements  Strategy{
  * 具体策略处理三
  */
 class MobileStrategy implements Strategy{
+    @Override
     public Double calRecharge(Double charge, RechargeTypeEnum type) {
         return charge;
     }
