@@ -7,9 +7,12 @@ package com.charon.entity;
  * @create: 2020-04-14 11:31
  **/
 public class User {
+    // id
     private String id;
+    // 姓名
     private String name;
-    private String age;
+    // 年级
+    private int age;
 
     public String getId() {
         return id;
@@ -27,22 +30,24 @@ public class User {
         this.name = name;
     }
 
-    public String getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(String age) {
+    public void setAge(int age) {
         this.age = age;
     }
 
     public User() {
     }
 
-    public User(String id, String name, String age) {
+    public User(String id, String name, int age) {
         this.id = id;
         this.name = name;
         this.age = age;
     }
+
+
 
     @Override
     public String toString() {
